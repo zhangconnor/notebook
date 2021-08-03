@@ -10,12 +10,9 @@ Collections则是集合类的一个工具类/帮助类，其中提供了一系�
 
 
 ## List、Set、Map 之间的区别是什么？
-图片
+![List、Set、Map 之间的区别](https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIOPwPTKJJXaorw1FJMNRKaOeo9tSDgcGQj8vy249ZdF7HIyDTEaa0YtNUM87hPsXV8gLrShy4gjBA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 ## HashMap 和 Hashtable 有什么区别？
-
-
-
 hashMap去掉了HashTable 的contains方法，但是加上了containsValue（）和containsKey（）方法。
 
 hashTable同步的，而HashMap是非同步的，效率上逼hashTable要高。
