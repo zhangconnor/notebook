@@ -20,15 +20,15 @@ JRE：Java Runtime Environment 的简称，java 运行环境，为 java 的运�
 
 #### 代码示例：
 
-    ```java
-    String x = "string";
-    String y = "string";
-    String z = new String("string");
-    System.out.println(x==y); // true
-    System.out.println(x==z); // false
-    System.out.println(x.equals(y)); // true
-    System.out.println(x.equals(z)); // true
-    ```
+```java
+String x = "string";
+String y = "string";
+String z = new String("string");
+System.out.println(x==y); // true
+System.out.println(x==z); // false
+System.out.println(x.equals(y)); // true
+System.out.println(x.equals(z)); // true
+```
 
 #### 代码解读：因为 x 和 y 指向的是同一个引用，所以 == 也是 true，而 new String()方法则重写开辟了内存空间，所以 == 结果为 false，而 equals 比较的一直是值，所以结果都为 true。
 
@@ -62,23 +62,25 @@ System.out.println(c1.equals(c2)); // false
 
 输出结果出乎我们的意料，竟然是 false？这是怎么回事，看了 equals 源码就知道了，源码如下：
 
+```java
 public boolean equals(Object obj) {
     return (this == obj);
 }
+```
 
 原来 equals 本质上就是 ==。
 
 那问题来了，两个相同值的 String 对象，为什么返回的是 true？代码如下：
 
+```java
 String s1 = new String("老王");
 String s2 = new String("老王");
 System.out.println(s1.equals(s2)); // true
-
+```
 
 同样的，当我们进入 String 的 equals 方法，找到了答案，代码如下：
 
-
-
+```java
 public boolean equals(Object anObject) {
     if (this == anObject) {
         return true;
@@ -100,10 +102,8 @@ public boolean equals(Object anObject) {
     }
     return false;
 }
-
+```
 
 原来是 String 重写了 Object 的 equals 方法，把引用比较改成了值比较。
 
-
-
-总结 ：== 对于基本类型来说是值比较，对于引用类型来说是比较的是引用；而 equals 默认情况下是引用比较，只是很多类重新了 equals 方法，比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。
+#### 总结 ：== 对于基本类型来说是值比较，对于引用类型来说是比较的是引用；而 equals 默认情况下是引用比较，只是很多类重新了 equals 方法，比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。
