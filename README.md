@@ -1,4 +1,4 @@
-# notebook私人笔记本
+# notebook
 
 ### 这是一个私人笔记本
 
