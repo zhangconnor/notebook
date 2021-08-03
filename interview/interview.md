@@ -1,8 +1,8 @@
-#Java 最常见的 208 道面试题：第一模块
+# Java 最常见的 208 道面试题：第一模块
 
-##Java 基础
+## Java 基础
 
-###JDK 和 JRE 有什么区别？
+### JDK 和 JRE 有什么区别？
 
 JDK：Java Development Kit 的简称，java 开发工具包，提供了 java 的开发环境和运行环境。
 JRE：Java Runtime Environment 的简称，java 运行环境，为 java 的运行提供了所需环境。
