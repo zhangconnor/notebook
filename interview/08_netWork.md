@@ -2,7 +2,7 @@
 
 
 
-79. http 响应码 301 和 302 代表的是什么？有什么区别？
+### http 响应码 301 和 302 代表的是什么？有什么区别？
 
 
 
@@ -20,7 +20,7 @@
 
 
 
-80. forward 和 redirect 的区别？
+### forward 和 redirect 的区别？
 
 
 
@@ -47,7 +47,7 @@ Forward和Redirect代表了两种请求转发方式：直接转发和间接转�
 间接转发就相当于："A找B借钱，B说没有，让A去找C借"。
 
 
-81. 简述 tcp 和 udp的区别？
+### 简述 tcp 和 udp的区别？
 
 
 
@@ -65,7 +65,7 @@ TCP对系统资源要求较多，UDP对系统资源要求较少。
 
 
 
-82. tcp 为什么要三次握手，两次不行吗？为什么？
+### tcp 为什么要三次握手，两次不行吗？为什么？
 
 
 
@@ -77,7 +77,7 @@ TCP对系统资源要求较多，UDP对系统资源要求较少。
 
 
 
-83. 说一下 tcp 粘包是怎么产生的？
+### 说一下 tcp 粘包是怎么产生的？
 
 
 
@@ -87,7 +87,7 @@ TCP对系统资源要求较多，UDP对系统资源要求较少。
 
 采用TCP协议传输数据的客户端与服务器经常是保持一个长连接的状态（一次连接发一次数据不存在粘包），双方在连接不断开的情况下，可以一直传输数据；但当发送的数据包过于的小时，那么TCP协议默认的会启用Nagle算法，将这些较小的数据包进行合并发送（缓冲区数据发送是一个堆压的过程）；这个合并过程就是在发送缓冲区中进行的，也就是说数据发送出来它已经是粘包的状态了。
 
-![发送方产生粘包](https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMnOiaLZLvCauibB6a1NxIwLdQC1gqfKDwusvSlQxEaDnRSySSvcK2VNlpdH9MFfRasTicha14JuvKYQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![发送方产生粘包][发送方产生粘包]
 
 
 
@@ -98,10 +98,10 @@ TCP对系统资源要求较多，UDP对系统资源要求较少。
 接收方采用TCP协议接收数据时的过程是这样的：数据到底接收方，从网络模型的下方传递至传输层，传输层的TCP协议处理是将其放置接收缓冲区，然后由应用层来主动获取（C语言用recv、read等函数）；这时会出现一个问题，就是我们在程序中调用的读取数据函数不能及时的把缓冲区中的数据拿出来，而下一个数据又到来并有一部分放入的缓冲区末尾，等我们读取数据时就是一个粘包。（放数据的速度 > 应用层拿数据速度） 
 
 
-![接收方产生粘包](https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMnOiaLZLvCauibB6a1NxIwLdV9Mic1uabwcX3AqZ9Tw9M7lcbwMQxFVUMWmG3SKNRibVLHZgcQvFDbmw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![接收方产生粘包][接收方产生粘包]
 
 
-84. OSI 的七层模型都有哪些？
+### OSI 的七层模型都有哪些？
 
 
 
@@ -113,7 +113,7 @@ TCP对系统资源要求较多，UDP对系统资源要求较少。
 数据链路层：建立逻辑连接、进行硬件地址寻址、差错校验等功能。
 物理层：建立、维护、断开物理连接。
 
-85. get 和 post 请求有哪些区别？
+### get 和 post 请求有哪些区别？
 
 
 
@@ -137,7 +137,7 @@ GET参数通过URL传递，POST放在Request body中。
 
 
 
-86. 如何实现跨域？
+### 如何实现跨域？
 
 
 
@@ -155,7 +155,8 @@ script标签可以得到从其他来源数据，这也是JSONP依赖的根据。
 
 JSONP（JSON with Padding）是数据格式JSON的一种“使用模式”，可以让网页从别的网域要数据。根据 XmlHttpRequest 对象受到同源策略的影响，而利用\<script>元素的这个开放策略，网页可以得到从其他来源动态产生的JSON数据，而这种使用模式就是所谓的 JSONP。用JSONP抓到的数据并不是JSON，而是任意的JavaScript，用 JavaScript解释器运行而不是用JSON解析器解析。所有，通过Chrome查看所有JSONP发送的Get请求都是js类型，而非XHR。 
 
-![JSONP跨域](https://mmbiz.qpic.cn/mmbiz_jpg/QCu849YTaIMnOiaLZLvCauibB6a1NxIwLdKs3N3VGEKWICjTuhM5qyWnD7BjupwhylCT1DLuYiaMYB3vt5GH0sWqg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![JSONP跨域][JSONP跨域]
+
 
 图片
 
@@ -208,7 +209,7 @@ window.name属性值在文档刷新后依旧存在的能力（且最大允许2M�
 
 
 
-每个iframe都有包裹它的window，而这个window是top window的子窗口。contentWindow属性返回<iframe>元素的Window对象。你可以使用这个Window对象来访问iframe的文档及其内部DOM。
+每个iframe都有包裹它的window，而这个window是top window的子窗口。contentWindow属性返回\<iframe>元素的Window对象。你可以使用这个Window对象来访问iframe的文档及其内部DOM。
 
 
 
@@ -401,8 +402,14 @@ DomainA客户端（浏览器） ==> DomainA服务器 ==> DomainB服务器 ==> Do
 
 
 
-87.说一下 JSONP 实现原理？
+### 说一下 JSONP 实现原理？
 
 
 
 jsonp 即 json+padding，动态创建script标签，利用script标签的src属性可以获取任何域下的js脚本，通过这个特性(也可以说漏洞)，服务器端不在返货json格式，而是返回一段调用某个函数的js代码，在src中进行了调用，这样实现了跨域。
+
+
+
+[发送方产生粘包]:https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/318149a77d9db39b6f6fe8ef19e04e3ee57d4be611231e3dcff1d419f08a16e73ca6db3e3e6704e5df370cad7d819799?pictype=scale&from=30113&version=3.3.3.3&uin=495869333&fname=%E5%8F%91%E9%80%81%E6%96%B9%E4%BA%A7%E7%94%9F%E7%B2%98%E5%8C%85.png&size=750
+[接收方产生粘包]:https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/7a0e63ec64ac934f6c244db8d8a78ab3b5b379520c665ee162b4fdf1b9006901794b322fd8fb394ba7c32d45fcedd3e6?pictype=scale&from=30113&version=3.3.3.3&uin=495869333&fname=%E6%8E%A5%E6%94%B6%E6%96%B9%E4%BA%A7%E7%94%9F%E7%B2%98%E5%8C%85.png&size=750
+[JSONP跨域]:https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/7f065a5920ce105e8bd3caff9942c596637300773a5217d5d7804d562fd32e9a8802cd41d630629e736e405649fdf981?pictype=scale&from=30113&version=3.3.3.3&uin=495869333&fname=JSONP.png&size=750

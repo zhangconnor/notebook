@@ -35,7 +35,7 @@
 来用类图来清晰的表示下的它们之间的关系：
 
 
-![简单工厂模式](https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIO6jib8XP3r8h8sib080icibHvuSJqRGYdhLZItsEf08Sx8aaPribM8zwzn8QVENHWfPx7NX2AV1ylg3Fg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![简单工厂模式][简单工厂模式]
 
 
 
@@ -46,8 +46,10 @@
 先来认识下什么是产品族： 位于不同产品等级结构中，功能相关联的产品组成的家族。
 
 
-![抽象工厂模式](https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIO6jib8XP3r8h8sib080icibHvuEjfkB779GfJ2ibh82pwJmcvia3RhfKCUQ23nKXEtfNltctciawxP9jibEw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
+
+
+![抽象工厂模式][抽象工厂模式]
 
 
 
@@ -80,3 +82,5 @@
 
 
 
+[简单工厂模式]:https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/b9f3320f7b7d3bf3899e1e42b35545f70c196840b3c2adc00122518267a947dc8ab4c0d1afa5bfb6f502c5d8cda7c546?pictype=scale&from=30113&version=3.3.3.3&uin=495869333&fname=%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.png&size=750
+[抽象工厂模式]:https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/02dc42fabe6a29078dd912b3543d49dbb356b2b3cdb20486d0e9c99cc55f948dae44b32d861b847f53cc63bb5069521d?pictype=scale&from=30113&version=3.3.3.3&uin=495869333&fname=%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F.png&size=750

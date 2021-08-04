@@ -1,14 +1,18 @@
-# Java 常见面试题: Java 基础
-## JDK 和 JRE 有什么区别？
-JDK：Java Development Kit 的简称，java 开发工具包，提供了 java 的开发环境和运行环境。
-JRE：Java Runtime Environment 的简称，java 运行环境，为 java 的运行提供了所需环境。
-具体来说 JDK 其实包含了 JRE，同时还包含了编译 java 源码的编译器 javac，还包含了很多 java 程序调试和分析的工具。简单来说：如果你需要运行 java 程序,只需安装 JRE 就可以了，如果你需要编写 java 程序，需要安装 JDK。
-## == 和 equals 的区别是什么？
-### == 解读
-对于基本类型和引用类型 == 的作用效果是不同的，如下所示：
-基本类型：比较的是值是否相同；
-引用类型：比较的是引用是否相同；
-### 代码示例：
+# Java 常见面试题
+## Java 基础
+### 1.  JDK 和 JRE 有什么区别？
+
+JDK：Java Development Kit 的简称，java 开发工具包，提供了 java 的开发环境和运行环境。  
+JRE：Java Runtime Environment 的简称，java 运行环境，为 java 的运行提供了所需环境。  
+具体来说 JDK 其实包含了 JRE，同时还包含了编译 java 源码的编译器 javac，还包含了很多 java 程序调试和分析的工具。简单来说：如果你需要运行 java 程序,只需安装 JRE 就可以了，如果你需要编写 java 程序，需要安装 JDK。  
+
+2. ### == 和 equals 的区别是什么？
+
+#### == 解读
+对于基本类型和引用类型 == 的作用效果是不同的，如下所示：  
+基本类型：比较的是值是否相同；  
+引用类型：比较的是引用是否相同；  
+#### 代码示例：
 ```java
 String x = "string";
 String y = "string";
@@ -18,10 +22,10 @@ System.out.println(x==z); // false
 System.out.println(x.equals(y)); // true
 System.out.println(x.equals(z)); // true
 ```
-### 代码解读：因为 x 和 y 指向的是同一个引用，所以 == 也是 true，而 new String()方法则重写开辟了内存空间，所以 == 结果为 false，而 equals 比较的一直是值，所以结果都为 true。
-### equals 解读
-equals 本质上就是 ==，只不过 String 和 Integer 等重写了 equals 方法，把它变成了值比较。看下面的代码就明白了。
-首先来看默认情况下 equals 比较一个有相同值的对象，代码如下：
+**代码解读：因为 x 和 y 指向的是同一个引用，所以 == 也是 true，而 new String()方法则重写开辟了内存空间，所以 == 结果为 false，而 equals 比较的一直是值，所以结果都为 true。**
+#### equals 解读
+equals 本质上就是 ==，只不过 String 和 Integer 等重写了 equals 方法，把它变成了值比较。看下面的代码就明白了。  
+首先来看默认情况下 equals 比较一个有相同值的对象，代码如下：  
 ```java
 class Cat {
     public Cat(String name) {
@@ -42,20 +46,20 @@ Cat c1 = new Cat("王磊");
 Cat c2 = new Cat("王磊");
 System.out.println(c1.equals(c2)); // false
 ```
-输出结果出乎我们的意料，竟然是 false？这是怎么回事，看了 equals 源码就知道了，源码如下：
+输出结果出乎我们的意料，竟然是 false？这是怎么回事，看了 equals 源码就知道了，源码如下：  
 ```java
 public boolean equals(Object obj) {
     return (this == obj);
 }
 ```
-原来 equals 本质上就是 ==。
-那问题来了，两个相同值的 String 对象，为什么返回的是 true？代码如下：
+原来 equals 本质上就是 ==。  
+那问题来了，两个相同值的 String 对象，为什么返回的是 true？代码如下：  
 ```java
 String s1 = new String("老王");
 String s2 = new String("老王");
 System.out.println(s1.equals(s2)); // true
 ```
-同样的，当我们进入 String 的 equals 方法，找到了答案，代码如下：
+同样的，当我们进入 String 的 equals 方法，找到了答案，代码如下：  
 ```java
 public boolean equals(Object anObject) {
     if (this == anObject) {
@@ -79,9 +83,9 @@ public boolean equals(Object anObject) {
     return false;
 }
 ```
-原来是 String 重写了 Object 的 equals 方法，把引用比较改成了值比较。
-### 总结 ：== 对于基本类型来说是值比较，对于引用类型来说是比较的是引用；而 equals 默认情况下是引用比较，只是很多类重新了 equals 方法，比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。
-## 两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？
+原来是 String 重写了 Object 的 equals 方法，把引用比较改成了值比较。  
+**总结 ：== 对于基本类型来说是值比较，对于引用类型来说是比较的是引用；而 equals 默认情况下是引用比较，只是很多类重新了 equals 方法，比如 String、Integer 等把它变成了值比较，所以一般情况下 equals 比较的是值是否相等。**  
+### 两个对象的 hashCode()相同，则 equals()也一定为 true，对吗？
 不对，两个对象的 hashCode()相同，equals()不一定 true。
 代码示例：
 ```java
@@ -97,7 +101,7 @@ false
 
 
 
-## final 在 java 中有什么作用？
+### final 在 java 中有什么作用？
 
 
 
@@ -109,7 +113,7 @@ final 修饰的变量叫常量，常量必须初始化，初始化之后值就�
 
 
 
-## java 中的 Math.round(-1.5) 等于多少？
+### java 中的 Math.round(-1.5) 等于多少？
 
 
 
@@ -117,7 +121,7 @@ final 修饰的变量叫常量，常量必须初始化，初始化之后值就�
 
 
 
-## String 属于基础的数据类型吗？
+### String 属于基础的数据类型吗？
 
 
 
@@ -125,7 +129,7 @@ String 不属于基础类型，基础类型有 8 种：byte、boolean、char、s
 
 
 
-## java 中操作字符串都有哪些类？它们之间有什么区别？
+### java 中操作字符串都有哪些类？它们之间有什么区别？
 
 
 
@@ -141,7 +145,7 @@ StringBuffer 和 StringBuilder 最大的区别在于，StringBuffer 是线程安
 
 
 
-## String str="i"与 String str=new String("i")一样吗？
+### String str="i"与 String str=new String("i")一样吗？
 
 
 
@@ -149,7 +153,7 @@ StringBuffer 和 StringBuilder 最大的区别在于，StringBuffer 是线程安
 
 
 
-## 如何将字符串反转？
+### 如何将字符串反转？
 
 
 
@@ -171,7 +175,7 @@ stringBuilder.append("abcdefg");
 System.out.println(stringBuilder.reverse()); // gfedcba
 
 
-## String 类的常用方法都有那些？
+### String 类的常用方法都有那些？
 
 
 
@@ -199,7 +203,7 @@ equals()：字符串比较。
 
 
 
-## 抽象类必须要有抽象方法吗？
+### 抽象类必须要有抽象方法吗？
 
 
 
@@ -222,7 +226,7 @@ abstract class Cat {
 
 
 
-## 普通类和抽象类有哪些区别？
+### 普通类和抽象类有哪些区别？
 
 
 
@@ -232,7 +236,7 @@ abstract class Cat {
 
 
 
-## 抽象类能使用 final 修饰吗？
+### 抽象类能使用 final 修饰吗？
 
 
 
@@ -244,7 +248,7 @@ abstract class Cat {
 
 
 
-## 接口和抽象类有什么区别？
+### 接口和抽象类有什么区别？
 
 
 
@@ -260,7 +264,7 @@ main 方法：抽象类可以有 main 方法，并且我们能运行它；接口
 
 
 
-## java 中 IO 流分为几种？
+### java 中 IO 流分为几种？
 
 
 
@@ -276,7 +280,7 @@ main 方法：抽象类可以有 main 方法，并且我们能运行它；接口
 
 
 
-## BIO、NIO、AIO 有什么区别？
+### BIO、NIO、AIO 有什么区别？
 
 
 
@@ -288,7 +292,7 @@ AIO：Asynchronous IO 是 NIO 的升级，也叫 NIO2，实现了异步非堵塞
 
 
 
-## Files的常用方法都有哪些？
+### Files的常用方法都有哪些？
 
 
 
