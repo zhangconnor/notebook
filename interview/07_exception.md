@@ -45,7 +45,6 @@ public class FinallyDemo2 {
         } finally {
             a = 40;
         }
-
 //      return a;
     }
 }
