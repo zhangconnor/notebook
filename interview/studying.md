@@ -19,4 +19,3 @@ Files.move()：移动文件。
 Files.size()：查看文件个数。  
 Files.read()：读取文件。  
 Files.write()：写入文件。  
-
