@@ -1,6 +1,6 @@
 # notebook
 ### 这是一个私人笔记本
-# markdown格式说明
+# markdown格式
 ## 标题
 # 一级标题
 ## 二级标题
