@@ -6,29 +6,29 @@
 
 ## 参考
 
-[Markdown格式](\interview\markdown.md)
+[Markdown格式](/interview/markdown.md)
 
-## 结构
+## 目录
 
 ### Java
 
-1. [Java基础](\interview\javaBase.md)
-2. [容器](\interview\collection.md)
-3. [线程](\interview\thread.md)
-4. [反射](\interview\reflection.md)
-5. [对象克隆](\interview\cloneable.md)
-6. [JavaWeb](\interview\javaWeb.md)
-7. [异常](\interview\exception.md)
-8. [网络服务](\interview\netWork.md)
-9. [设计模式](\interview\designpattern.md)
-10. [Spring](\interview\spring.md)
-11. [Hibernate](\interview\hibernate.md)
-12. [Mybatis](\interview\mybatis.md)
-13. [队列](\interview\mq.md)
-14. [Zookeeper](\interview\zookeeper.md)
-15. [MySql](\interview\mySql.md)
-16. [Redis](\interview\redis.md)
-17. [Jvm](\interview\jvm.md)
+1. [Java基础](/interview/javaBase.md)
+2. [容器](/interview/collection.md)
+3. [线程](/interview/thread.md)
+4. [反射](/interview/reflection.md)
+5. [对象克隆](/interview/cloneable.md)
+6. [JavaWeb](/interview/javaWeb.md)
+7. [异常](/interview/exception.md)
+8. [网络服务](/interview/netWork.md)
+9. [设计模式](/interview/designpattern.md)
+10. [Spring](/interview/spring.md)
+11. [Hibernate](/interview/hibernate.md)
+12. [Mybatis](/interview/mybatis.md)
+13. [队列](/interview/mq.md)
+14. [Zookeeper](/interview/zookeeper.md)
+15. [MySql](/interview/mySql.md)
+16. [Redis](/interview/redis.md)
+17. [Jvm](/interview/jvm.md)
 
 ### Goland
 
