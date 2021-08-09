@@ -1,14 +1,12 @@
-# Java 常见面试题
+# Java Web
 
-## Java Web
-
-### jsp 和 servlet 有什么区别？
+## jsp 和 servlet 有什么区别？
 jsp经编译后就变成了Servlet.（JSP的本质就是Servlet，JVM只能识别java的类，不能识别JSP的代码，Web容器将JSP的代码编译成JVM能够识别的java类）  
 jsp更擅长表现于页面显示，servlet更擅长于逻辑控制。  
 Servlet中没有内置对象，Jsp中的内置对象都是必须通过HttpServletRequest对象，HttpServletResponse对象以及HttpServlet对象得到。  
 Jsp是Servlet的一种简化，使用Jsp只需要完成程序员需要输出到客户端的内容，Jsp中的Java脚本如何镶嵌到一个类中，由Jsp容器完成。而Servlet则是个完整的Java类，这个类的Service方法用于生成对客户端的响应。  
 
-### jsp 有哪些内置对象？作用分别是什么？
+## jsp 有哪些内置对象？作用分别是什么？
 JSP有9个内置对象：  
 request：封装客户端的请求，其中包含来自GET或POST请求的参数；  
 response：封装服务器对客户端的响应；  
@@ -20,29 +18,29 @@ config：Web应用的配置对象；
 page：JSP页面本身（相当于Java程序中的this）；  
 exception：封装页面抛出异常的对象。  
 
-### 说一下 jsp 的 4 种作用域？
+## 说一下 jsp 的 4 种作用域？
 JSP中的四种作用域包括page、request、session和application，具体来说：  
 page代表与一个页面相关的对象和属性。  
 request代表与Web客户机发出的一个请求相关的对象和属性。一个请求可能跨越多个页面，涉及多个Web组件；需要在页面显示的临时数据可以置于此作用域。  
 session代表与某个用户与服务器建立的一次会话相关的对象和属性。跟某个用户相关的数据应该放在用户自己的session中。  
 application代表与整个Web应用程序相关的对象和属性，它实质上是跨越整个Web应用程序，包括多个页面、请求和会话的一个全局作用域。  
 
-### session 和 cookie 有什么区别？
+## session 和 cookie 有什么区别？
 由于HTTP协议是无状态的协议，所以服务端需要记录用户的状态时，就需要用某种机制来识具体的用户，这个机制就是Session.典型的场景比如购物车，当你点击下单按钮时，由于HTTP协议无状态，所以并不知道是哪个用户操作的，所以服务端要为特定的用户创建了特定的Session，用用于标识这个用户，并且跟踪用户，这样才知道购物车里面有几本书。这个Session是保存在服务端的，有一个唯一标识。在服务端保存Session的方法很多，内存、数据库、文件都有。集群的时候也要考虑Session的转移，在大型的网站，一般会有专门的Session服务器集群，用来保存用户会话，这个时候 Session 信息都是放在内存的，使用一些缓存服务比如Memcached之类的来放 Session。  
 思考一下服务端如何识别特定的客户？这个时候Cookie就登场了。每次HTTP请求的时候，客户端都会发送相应的Cookie信息到服务端。实际上大多数的应用都是用 Cookie 来实现Session跟踪的，第一次创建Session的时候，服务端会在HTTP协议中告诉客户端，需要在 Cookie 里面记录一个Session ID，以后每次请求把这个会话ID发送到服务器，我就知道你是谁了。有人问，如果客户端的浏览器禁用了 Cookie 怎么办？一般这种情况下，会使用一种叫做URL重写的技术来进行会话跟踪，即每次HTTP交互，URL后面都会被附加上一个诸如 sid=xxxxx 这样的参数，服务端据此来识别用户。  
 Cookie其实还可以用在一些方便用户的场景下，设想你某次登陆过一个网站，下次登录的时候不想再次输入账号了，怎么办？这个信息可以写到Cookie里面，访问网站的时候，网站页面的脚本可以读取这个信息，就自动帮你把用户名给填了，能够方便一下用户。这也是Cookie名称的由来，给用户的一点甜头。所以，总结一下：Session是在服务端保存的一个数据结构，用来跟踪用户的状态，这个数据可以保存在集群、数据库、文件中；Cookie是客户端保存用户信息的一种机制，用来记录用户的一些信息，也是实现Session的一种方式。  
 
-### 说一下 session 的工作原理？
+## 说一下 session 的工作原理？
 其实session是一个存在服务器上的类似于一个散列表格的文件。里面存有我们需要的信息，在我们需要用的时候可以从里面取出来。类似于一个大号的map吧，里面的键存储的是用户的sessionid，用户向服务器发送请求的时候会带上这个sessionid。这时就可以从中取出对应的值了。  
 
-### 如果客户端禁止 cookie 能实现 session 还能用吗？
+## 如果客户端禁止 cookie 能实现 session 还能用吗？
 Cookie与 Session，一般认为是两个独立的东西，Session采用的是在服务器端保持状态的方案，而Cookie采用的是在客户端保持状态的方案。但为什么禁用Cookie就不能得到Session呢？因为Session是用Session ID来确定当前对话所对应的服务器Session，而Session ID是通过Cookie来传递的，禁用Cookie相当于失去了Session ID，也就得不到Session了。  
 假定用户关闭Cookie的情况下使用Session，其实现途径有以下几种：  
 设置php.ini配置文件中的“session.use_trans_sid = 1”，或者编译时打开打开了“--enable-trans-sid”选项，让PHP自动跨页传递Session ID。  
 手动通过URL传值、隐藏表单传递Session ID。  
 用文件、数据库等形式保存Session ID，在跨页过程中手动调用。  
 
-### spring mvc 和 struts 的区别是什么？
+## spring mvc 和 struts 的区别是什么？
 
 1. 拦截机制的不同  
 Struts2是类级别的拦截，每次请求就会创建一个Action，和Spring整合时Struts2的ActionBean注入作用域是原型模式prototype，然后通过setter，getter吧request数据注入到属性。Struts2中，一个Action对应一个request，response上下文，在接收参数时，可以通过属性接收，这说明属性参数是让多个方法共享的。Struts2中Action的一个方法可以对应一个url，而其类属性却被所有方法共享，这也就无法用注解或其他方式标识其所属方法了，只能设计为多例。  
@@ -55,18 +53,18 @@ Struts2是类级别的拦截，每次请求对应实例一个新的Action，需�
 4. 配置方面  
 spring MVC和Spring是无缝的。从这个项目的管理和安全上也比Struts2高。  
 
-### 如何避免 sql 注入？
+## 如何避免 sql 注入？
 PreparedStatement（简单又有效的方法）  
 使用正则表达式过滤传入的参数  
 字符串过滤  
 JSP中调用该函数检查是否包函非法字符  
 JSP页面判断代码  
 
-### 什么是 XSS 攻击，如何避免？  
+## 什么是 XSS 攻击，如何避免？  
 XSS攻击又称CSS,全称Cross Site Script  （跨站脚本攻击），其原理是攻击者向有XSS漏洞的网站中输入恶意的 HTML 代码，当用户浏览该网站时，这段 HTML 代码会自动执行，从而达到攻击的目的。XSS 攻击类似于 SQL 注入攻击，SQL注入攻击中以SQL语句作为用户输入，从而达到查询/修改/删除数据的目的，而在xss攻击中，通过插入恶意脚本，实现对用户游览器的控制，获取用户的一些信息。 XSS是 Web 程序中常见的漏洞，XSS 属于被动式且用于客户端的攻击方式。  
 XSS防范的总体思路是：对输入(和URL参数)进行过滤，对输出进行编码。  
 
-### 什么是 CSRF 攻击，如何避免？
+## 什么是 CSRF 攻击，如何避免？
 CSRF（Cross-site request forgery）也被称为 one-click attack或者 session riding，中文全称是叫跨站请求伪造。一般来说，攻击者通过伪造用户的浏览器的请求，向访问一个用户自己曾经认证访问过的网站发送出去，使目标网站接收并误以为是用户的真实操作而去执行命令。常用于盗取账号、转账、发送虚假消息等。攻击者利用网站对请求的验证漏洞而实现这样的攻击行为，网站能够确认请求来源于用户的浏览器，却不能验证请求是否源于用户的真实意愿下的操作行为。  
 如何避免：  
 1. 验证 HTTP Referer 字段  

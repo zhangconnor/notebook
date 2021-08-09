@@ -1,28 +1,26 @@
-# Java 常见面试题
+# Mybatis
 
-## Mybatis
+## mybatis 中 #{}和 ${}的区别是什么？
 
-### mybatis 中 #{}和 ${}的区别是什么？
-
-#{}是预编译处理，${}是字符串替换；  
+#{}是预编译处理，\${}是字符串替换；  
 Mybatis在处理#{}时，会将sql中的#{}替换为?号，调用PreparedStatement的set方法来赋值；  
 Mybatis在处理${}时，就是把${}替换成变量的值；  
 使用#{}可以有效的防止SQL注入，提高系统安全性。  
 
-### mybatis 有几种分页方式？
+## mybatis 有几种分页方式？
 
 数组分页  
 sql分页  
 拦截器分页  
 RowBounds分页
 
-### mybatis 逻辑分页和物理分页的区别是什么？
+## mybatis 逻辑分页和物理分页的区别是什么？
 
 物理分页速度上并不一定快于逻辑分页，逻辑分页速度上也并不一定快于物理分页。
 
 物理分页总是优于逻辑分页：没有必要将属于数据库端的压力加诸到应用端来，就算速度上存在优势,然而其它性能上的优点足以弥补这个缺点。
 
-### mybatis 是否支持延迟加载？延迟加载的原理是什么？
+## mybatis 是否支持延迟加载？延迟加载的原理是什么？
 
 Mybatis仅支持association关联对象和collection关联集合对象的延迟加载，association指的就是一对一，collection指的就是一对多查询。在Mybatis配置文件中，可以配置是否启用延迟加载lazyLoadingEnabled=true|false。
 
@@ -30,7 +28,7 @@ Mybatis仅支持association关联对象和collection关联集合对象的延迟�
 
 当然了，不光是Mybatis，几乎所有的包括Hibernate，支持延迟加载的原理都是一样的。
 
-### 说一下 mybatis 的一级缓存和二级缓存？
+## 说一下 mybatis 的一级缓存和二级缓存？
 
 一级缓存: 基于 PerpetualCache 的 HashMap 本地缓存，其存储作用域为 Session，当 Session flush 或 close 之后，该 Session 中的所有 Cache 就将清空，默认打开一级缓存。
 
@@ -38,7 +36,7 @@ Mybatis仅支持association关联对象和collection关联集合对象的延迟�
 
 对于缓存数据更新机制，当某一个作用域(一级缓存 Session/二级缓存Namespaces)的进行了C/U/D 操作后，默认该作用域下所有 select 中的缓存将被 clear。
 
-### mybatis 和 hibernate 的区别有哪些？  
+## mybatis 和 hibernate 的区别有哪些？  
 
 1. Mybatis和hibernate不同，它不完全是一个ORM框架，因为MyBatis需要程序员自己编写Sql语句。
 
@@ -46,17 +44,17 @@ Mybatis仅支持association关联对象和collection关联集合对象的延迟�
 
 3. Hibernate对象/关系映射能力强，数据库无关性好，对于关系模型要求高的软件，如果用hibernate开发可以节省很多代码，提高效率。 
 
-### mybatis 有哪些执行器（Executor）？
+## mybatis 有哪些执行器（Executor）？
 
 Mybatis有三种基本的执行器（Executor）：  
 SimpleExecutor：每执行一次update或select，就开启一个Statement对象，用完立刻关闭Statement对象。  
 ReuseExecutor：执行update或select，以sql作为key查找Statement对象，存在就使用，不存在就创建，用完后，不关闭Statement对象，而是放置于Map内，供下一次使用。简言之，就是重复使用Statement对象。  
 BatchExecutor：执行update（没有select，JDBC批处理不支持select），将所有sql都添加到批处理中（addBatch()），等待统一执行（executeBatch()），它缓存了多个Statement对象，每个Statement对象都是addBatch()完毕后，等待逐一执行executeBatch()批处理。与JDBC批处理相同。  
-### mybatis 分页插件的实现原理是什么？
+## mybatis 分页插件的实现原理是什么？
 
 分页插件的基本原理是使用Mybatis提供的插件接口，实现自定义插件，在插件的拦截方法内拦截待执行的sql，然后重写sql，根据dialect方言，添加对应的物理分页语句和物理分页参数。
 
-### mybatis 如何编写一个自定义插件？
+## mybatis 如何编写一个自定义插件？
 
 转自：blog.csdn.net/qq_30051265/article/details/80266434
 

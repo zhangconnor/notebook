@@ -1,23 +1,21 @@
-# Java 常见面试题
+# 异常
 
-## 异常
-
-### throw 和 throws 的区别？
+## throw 和 throws 的区别？
 throws是用来声明一个方法可能抛出的所有异常信息，throws是将异常声明但是不处理，而是将异常往上传，谁调用我就交给谁处理。而throw则是指抛出的一个具体的异常类型。  
 
-### final、finally、finalize 有什么区别？
+## final、finally、finalize 有什么区别？
 final可以修饰类、变量、方法，修饰类表示该类不能被继承、修饰方法表示该方法不能被重写、修饰变量表示该变量是一个常量不能被重新赋值。  
 finally一般作用在try-catch代码块中，在处理异常的时候，通常我们将一定要执行的代码方法finally代码块中，表示不管是否出现异常，该代码块都会执行，一般用来存放一些关闭资源的代码。  
 finalize是一个方法，属于Object类的一个方法，而Object类是所有类的父类，该方法一般由垃圾回收器来调用，当我们调用System的gc()方法的时候，由垃圾回收器调用finalize(),回收垃圾。   
 
-### try-catch-finally 中哪个部分可以省略？
+## try-catch-finally 中哪个部分可以省略？
 catch 可以省略  
 原因：  
 更为严格的说法其实是：try只适合处理运行时异常，try+catch适合处理运行时异常+普通异常。也就是说，如果你只用try去处理普通异常却不加以catch处理，编译是通不过的，因为编译器硬性规定，普通异常如果选择捕获，则必须用catch显示声明以便进一步处理。而运行时异常在编译时没有如此规定，所以catch可以省略，你加上catch编译器也觉得无可厚非。  
 理论上，编译器看任何代码都不顺眼，都觉得可能有潜在的问题，所以你即使对所有代码加上try，代码在运行期时也只不过是在正常运行的基础上加一层皮。但是你一旦对一段代码加上try，就等于显示地承诺编译器，对这段代码可能抛出的异常进行捕获而非向上抛出处理。如果是普通异常，编译器要求必须用catch捕获以便进一步处理；如果运行时异常，捕获然后丢弃并且+finally扫尾处理，或者加上catch捕获以便进一步处理。  
 至于加上finally，则是在不管有没捕获异常，都要进行的“扫尾”处理。  
 
-### try-catch-finally 中，如果 catch 中 return 了，finally 还会执行吗？
+## try-catch-finally 中，如果 catch 中 return 了，finally 还会执行吗？
 会执行，在 return 前执行。  
 代码示例1：  
 ```java
@@ -89,7 +87,7 @@ public class FinallyDemo2 {
 
 执行结果：40  
 
-### 常见的异常类有哪些？
+## 常见的异常类有哪些？
 NullPointerException：当应用程序试图访问空对象时，则抛出该异常。  
 SQLException：提供关于数据库访问错误或其他错误信息的异常。  
 IndexOutOfBoundsException：指示某排序索引（例如对数组、字符串或向量的排序）超出范围时抛出。   
