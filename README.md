@@ -4,9 +4,17 @@
 
 这是一个私人Maredown笔记本，目前包含java部分笔记
 
-## 参考
+## 规范
 
-[Markdown格式](/interview/markdown.md)
+[Markdown](/interview/markdown.md)
+
+## 链接
+
+本文档支持以下站点访问：
+
+[gitee](https://gitee.com/sj_zhang/notebook.git)
+
+[github](https://github.com/zhangconnor/notebook.git)
 
 ## 目录
 
