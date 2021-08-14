@@ -1,0 +1,14 @@
+### IDEA ###
+.idea/*
+*.iml
+*/target/*
+*/*.iml
+/.gradle/
+*.project
+*/.settings/*
+.settings/*
+*.classpath
+*.factorypath
+
+### vscode
+.vscode/*
