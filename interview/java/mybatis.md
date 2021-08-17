@@ -108,3 +108,45 @@ public class ExamplePlugin implements Interceptor {
 type：表示拦截的类，这里是Executor的实现类；  
 method：表示拦截的方法，这里是拦截Executor的update方法；  
 args：表示方法参数。  
+
+
+## mapper 常用标签有哪些
+
+SQL语句标签 inster select delete update  
+sql片段标签<sql>  
+映射管理器resultMap  
+动态语句标签 <where> <if> <set> <foreach>  
+<choose><when></when><otherwise></otherwise></choose>条件判断标签组
+
+### SQL语句标签 inster select delete update  
+需要配置的属性：id=”xxxx” >>> 表示此段sql执行语句的唯一标识，也是接口的方法名称【必须一致才能找到】  
+parameterType=”” >>>表示该sql语句中需要传入的参数， 类型要与对应的接口方法的类型一致【可选】  
+resultMap=“ ”>>> 定义出参，调用已定义的<resultMap>映射管理器的id值  
+resultType=“ ”>>>定义出参，匹配普通java类型或自定义的pojo【出参类型若不指定，将为语句类型默认类型，如<insert>语句返回值为int】  
+
+p.s： 至于为何<insert><delete><update> 语句的返回值类型为什么是int，有过JDBC操作经验的朋友可能会有印象，增删改操作实际上返回的是操作的条数。而Mybatis框架本身是基于JDBC的，所以此处也沿袭这种返回值类型。  
+
+传参和取值：mapper.xml 的灵活性还体现在SQL执行语句可以传参，参数类型通过parameterType= “” 定义  
+取值方式1：#{value jdbcType = valuetype}：jdbcType 表示该属性的数据类型在数据库中对应的类型，如 #{user jdbcType=varchar} 等价于 String username；  
+取值方式2：{value } :&nbsp;<span style="color:#cc0000;"><strong>这种方式不建议大量使用</strong></span>，可能会发送sql注入而导致安全性问题。一般该取值方式可用在非经常变化的值上，如orderby{columnName}；  
+
+### sql片段标签<sql>  
+通过该标签可定义能复用的sql语句片段，在执行sql语句标签中直接引用即可。这样既可以提高编码效率，还能有效简化代码，提高可读性  
+需要配置的属性：id=”” >>>表示需要改sql语句片段的唯一标识  
+引用：通过<include refid=”” />标签引用，refid=”” 中的值指向需要引用的<sql>中的id=“”属性
+
+### 映射管理器resultMap  
+映射管理器，是Mybatis中最强大的工具，使用其可以进行实体类之间的关系，并管理结果和实体类间的映射关系  
+需要配置的属性：<resultMap id=”  ” type=”  ”></resutlMap>   id=” “>>>表示这个映射管理器的唯一标识，外部通过该值引用； type = ” “>>> 表示需要映射的实体类；  
+需要配置的参数：<id column = ” ” property= ” ” />    <id>标签指的是：结果集中结果唯一的列【column】 和 实体属性【property】的映射关系，注意：<id>标签管理的列未必是主键列，需要根据具体需求指定；  
+<result column= ” ” property=” ” />  <result>标签指的是：结果集中普通列【column】 和 实体属性【property】的映射关系；  
+需要维护的关系：所谓关系维护是值在主表查询时将其关联子表的结果也查询出来
+
+一对一关系<assocation property = ” ” javaType=” “>   property = “ ” 被维护实体在宿主实体中的属性名，javaType = ” ” 被维护实体的类型  
+在resultMap映射管理器中，通过<association> 进行了维护，也就是在查询Orderitem对象时，可以把关联的Product对象的信息也查询出来  
+一对多关系的维护<collection property=” ” ofType=” “> property = “ ” 被维护实体在宿主实体中的属性名 ，ofType=“ ”是被维护方在宿主类中集合泛型限定类型  
+【由于在一对多关系中，多的一放是以List形式存在，因此ofType的值取用Lsit<?> 的泛型对象类型】
+
+在resultMap 中需要注意两点：  
+关联关系的维护可以根据实体类之间的实际情况进行嵌套维护
+关于出现重复列名的处理：在实际操作过程中，查询到的结果可能会出现相同的列名，这样会对映射到实体属性带来影响甚至出现报错，那么对待这个问题可以通过对列取别名的方式处理
