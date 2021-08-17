@@ -134,6 +134,56 @@ ModelAndView：服务层返回的数据和视图层的封装类
 ViewResolver：视图解析器，解析具体的视图  
 Interceptors ：拦截器，负责拦截我们定义的请求然后做处理工作  
 
+## @Controller和@RestController的区别?
+
+1. Controller, RestController的共同点
+都是用来表示Spring某个类的是否可以接收HTTP请求
+
+2.  Controller, RestController的不同点  
+@Controller标识一个Spring类是Spring MVC controller处理器  
+@RestController：@RestController是@Controller和@ResponseBody的结合体，两个标注合并起来的作用。
+
+3、如果只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器InternalResourceViewResolver不起作用，返回的内容就是Return 里的内容。  
+例如：本来应该到success.jsp页面的，则其显示success.
+
+4、如果需要返回到指定页面，则需要用 @Controller配合视图解析器InternalResourceViewResolver才行。
+
+5、如果需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。
+
+## @RequestBody @ResponseBody 的作用
+### @RequestBody
+
+1. 作用：
+该注解用于读取 Request 请求的 body 部分数据，使用系统默认配置的 HttpMessageConverter 进行解析，然后把相应的数据绑定到要返回的对象上；
+再把 HttpMessageConverter 返回的对象数据绑定到 controller 中方法的参数上。
+2. 使用时机：
+GET、POST方式提交时， 根据 request header Content-Type 的值来判断:
+application/x-www-form-urlencoded：可选（即非必须，因为这种情况的数据 @RequestParam, @ModelAttribute 也可以处理，当然@RequestBody也能处理）；
+multipart/form-data：不能处理（即使用@RequestBody不能处理这种格式的数据）；
+其他格式：必须（其他格式包括application/json, application/xml等。这些格式的数据，必须使用@RequestBody来处理）；
+PUT 方式提交时， 根据request header Content-Type的值来判断:
+application/x-www-form-urlencoded：必须；
+multipart/form-data：不能处理；
+其他格式：必须；
+
+作者：希希里之海
+链接：https://www.jianshu.com/p/64b22da6c9ab
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+### @ResponseBody
+
+1. 作用：
+该注解用于将 Controller 的方法返回的对象，通过适当的 HttpMessageConverter 转换为指定格式后，写入到 Response 对象的body 数据区。
+
+2. 使用时机：
+返回的数据不是 html 标签的页面，而是其他某种格式的数据时（如 json、xml 等）使用。
+
+作者：希希里之海
+链接：https://www.jianshu.com/p/64b22da6c9ab
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
 ## @RequestMapping 的作用是什么？
 
 RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。  
