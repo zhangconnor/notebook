@@ -28,3 +28,26 @@ Spring的AOP
 
 ## 怎么实现动态代理？
 首先必须定义一个接口，还要有一个InvocationHandler(将实现接口的类的对象传递给它)处理类。再有一个工具类Proxy(习惯性将其称为代理类，因为调用他的newInstance()可以产生代理对象,其实他只是一个产生代理对象的工具类）。利用到InvocationHandler，拼接代理类源码，将其编译生成代理类的二进制码，利用加载器加载，并将其实例化产生代理对象，最后返回。  
+
+## 目录
+
+* [Java基础](/java/javaBase.md)
+* [容器](/java/collection.md)
+* [线程](/java/thread.md)
+* [反射](/java/reflection.md)
+* [对象克隆](/java/cloneable.md)
+* [JavaWeb](/java/javaWeb.md)
+* [异常](/java/exception.md)
+* [网络服务](/java/netWork.md)
+* [设计模式](/java/designpattern.md)
+* [Spring](/java/spring.md)
+* [Spring MVC](/java/springMVC.md)
+* [Spring Boot](/java/springBoot.md)
+* [Spring Cloud](/java/springCloud.md)
+* [Hibernate](/java/hibernate.md)
+* [Mybatis](/java/mybatis.md)
+* [队列](/java/mq.md)
+* [Zookeeper](/java/zookeeper.md)
+* [MySql](/java/mySql.md)
+* [Redis](/java/redis.md)
+* [Jvm](/java/jvm.md)

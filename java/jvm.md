@@ -126,6 +126,28 @@ jvisualvm：JDK 自带的全能分析工具，可以分析：内存快照、线�
 -XX:+PrintGC：开启打印 gc 信息；  
 -XX:+PrintGCDetails：打印 gc 详细信息。
 
+## 目录
+
+* [Java基础](/java/javaBase.md)
+* [容器](/java/collection.md)
+* [线程](/java/thread.md)
+* [反射](/java/reflection.md)
+* [对象克隆](/java/cloneable.md)
+* [JavaWeb](/java/javaWeb.md)
+* [异常](/java/exception.md)
+* [网络服务](/java/netWork.md)
+* [设计模式](/java/designpattern.md)
+* [Spring](/java/spring.md)
+* [Spring MVC](/java/springMVC.md)
+* [Spring Boot](/java/springBoot.md)
+* [Spring Cloud](/java/springCloud.md)
+* [Hibernate](/java/hibernate.md)
+* [Mybatis](/java/mybatis.md)
+* [队列](/java/mq.md)
+* [Zookeeper](/java/zookeeper.md)
+* [MySql](/java/mySql.md)
+* [Redis](/java/redis.md)
+* [Jvm](/java/jvm.md)
 
 
 [运行时数据区]:https://picabstract-preview-ftn.weiyun.com/ftn_pic_abs_v3/de8ddbae139cd52b0045def8195051ee66ad8cffa5e080dff4949c11b5ff0bbcecfc9b2186a9616d1853390dca8f7a91?pictype=scale&from=30113&version=3.3.3.3&uin=495869333&fname=%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA.png&size=750

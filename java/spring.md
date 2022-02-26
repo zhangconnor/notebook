@@ -26,7 +26,7 @@ AOP（Aspect-Oriented Programming，面向方面编程），可以说是OOP（Ob
 
 ## 解释一下什么是 ioc？
 
-IOC是Inversion of Control的缩写，多数书籍翻译成“控制反转”。  
+IOC是Inversion of Control的缩写，多数书籍翻译成“控制反转”。  简单来说就是反转了bean的创建权
 1996年，Michael Mattson在一篇有关探讨面向对象框架的文章中，首先提出了IOC 这个概念。对于面向对象设计及编程的基本思想，前面我们已经讲了很多了，不再赘述，简单来说就是把复杂系统分解成相互合作的对象，这些对象类通过封装以后，内部实现对外部是透明的，从而降低了解决问题的复杂度，而且可以灵活地被重用和扩展。  
 IOC理论提出的观点大体是这样的：借助于“第三方”实现具有依赖关系的对象之间的解耦。如下图：
 
@@ -567,6 +567,28 @@ Ribbon，主要提供客户侧的软件负载均衡算法。Ribbon客户端组�
 5. 分布式配置——Spring Cloud Config  
 这个还是静态的，得配合Spring Cloud Bus实现动态的配置更新。  
 
+## 目录
+
+* [Java基础](/java/javaBase.md)
+* [容器](/java/collection.md)
+* [线程](/java/thread.md)
+* [反射](/java/reflection.md)
+* [对象克隆](/java/cloneable.md)
+* [JavaWeb](/java/javaWeb.md)
+* [异常](/java/exception.md)
+* [网络服务](/java/netWork.md)
+* [设计模式](/java/designpattern.md)
+* [Spring](/java/spring.md)
+* [Spring MVC](/java/springMVC.md)
+* [Spring Boot](/java/springBoot.md)
+* [Spring Cloud](/java/springCloud.md)
+* [Hibernate](/java/hibernate.md)
+* [Mybatis](/java/mybatis.md)
+* [队列](/java/mq.md)
+* [Zookeeper](/java/zookeeper.md)
+* [MySql](/java/mySql.md)
+* [Redis](/java/redis.md)
+* [Jvm](/java/jvm.md)
 
 
 

@@ -78,3 +78,26 @@ CSRF 攻击之所以能够成功，是因为黑客可以完全伪造用户的请
 而对于 POST 请求来说，要在 form 的最后加上 \<input type="hidden" name="csrftoken" value="tokenvalue"/>，这样就把token以参数的形式加入请求了。  
 4. 在HTTP 头中自定义属性并验证  
 这种方法也是使用 token 并进行验证，和上一种方法不同的是，这里并不是把 token 以参数的形式置于 HTTP 请求之中，而是把它放到 HTTP 头中自定义的属性里。通过 XMLHttpRequest 这个类，可以一次性给所有该类请求加上 csrftoken 这个 HTTP 头属性，并把 token 值放入其中。这样解决了上种方法在请求中加入 token 的不便，同时，通过 XMLHttpRequest 请求的地址不会被记录到浏览器的地址栏，也不用担心 token 会透过 Referer 泄露到其他网站中去。  
+
+## 目录
+
+* [Java基础](/java/javaBase.md)
+* [容器](/java/collection.md)
+* [线程](/java/thread.md)
+* [反射](/java/reflection.md)
+* [对象克隆](/java/cloneable.md)
+* [JavaWeb](/java/javaWeb.md)
+* [异常](/java/exception.md)
+* [网络服务](/java/netWork.md)
+* [设计模式](/java/designpattern.md)
+* [Spring](/java/spring.md)
+* [Spring MVC](/java/springMVC.md)
+* [Spring Boot](/java/springBoot.md)
+* [Spring Cloud](/java/springCloud.md)
+* [Hibernate](/java/hibernate.md)
+* [Mybatis](/java/mybatis.md)
+* [队列](/java/mq.md)
+* [Zookeeper](/java/zookeeper.md)
+* [MySql](/java/mySql.md)
+* [Redis](/java/redis.md)
+* [Jvm](/java/jvm.md)
